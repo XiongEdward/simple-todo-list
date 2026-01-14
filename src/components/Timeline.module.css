@@ -1,0 +1,71 @@
+.container {
+    height: 100%;
+    /* If inside flex container */
+    min-height: 1440px;
+    /* 1 px per minute? Or purely percent based on container height? 
+                         If purely percent, container handles scroll or 100vh? 
+                         Layout rightPanel has overflow-y: auto. 
+                         Let's give it a min-height so it's scrollable/readable. */
+    position: relative;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.timeline {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-left: 2px solid var(--border-color);
+    margin-left: 3rem;
+    /* Space for labels */
+}
+
+.hourMarker {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.hourLabel {
+    position: absolute;
+    left: -3.5rem;
+    font-size: 0.75rem;
+    color: #888;
+    font-variant-numeric: tabular-nums;
+    width: 3rem;
+    text-align: right;
+    transform: translateY(-50%);
+}
+
+.hourLine {
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color);
+    opacity: 0.5;
+}
+
+.timeBlock {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    color: white;
+    font-size: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 5;
+    transition: all 0.3s;
+}
+
+.blockTitle {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
