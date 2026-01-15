@@ -4,7 +4,7 @@ import { useTodos } from '../hooks/useTodos';
 import { getCurrentTime } from '../utils/timeUtils';
 import styles from './TodoList.module.css';
 
-export const TodoList = ({ todos, addTodo, toggleTodo, deleteTodo }: ReturnType<typeof useTodos>) => {
+export const TodoList = ({ todos, addTodo, toggleTodo, deleteTodo, themeColor }: ReturnType<typeof useTodos> & { themeColor: string }) => {
     const [text, setText] = useState('');
     const [startTime, setStartTime] = useState(getCurrentTime());
     const [endTime, setEndTime] = useState(getCurrentTime());
@@ -13,7 +13,7 @@ export const TodoList = ({ todos, addTodo, toggleTodo, deleteTodo }: ReturnType<
         e.preventDefault();
         if (text.trim()) {
             try {
-                addTodo(text, startTime, endTime);
+                addTodo(text, startTime, endTime, themeColor);
                 setText('');
                 // Keep times as is or reset? Resetting implies next task likely follows
             } catch (err: any) {
